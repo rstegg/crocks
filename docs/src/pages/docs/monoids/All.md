@@ -9,6 +9,11 @@ weight: 10
 All Boolean
 ```
 
+<details>
+  <summary>Breakdown</summary>
+  The Monoid <code> All </code> outputs type <code> Boolean </code>
+</details>
+
 `All` is a `Monoid` that will combine (2) values of any type using logical
 conjunction (AND) on their coerced `Boolean` values, mapping truth-y values to
 `true` and false-y values to `false`.
@@ -54,6 +59,11 @@ allGood([ 'nice', '00', null ])
 All.empty :: () -> All
 ```
 
+<details>
+  <summary>Breakdown</summary>
+  The constructor <code> All.empty() </code> outputs type <code> All </code>
+</details>
+
 `empty` provides the identity for the `Monoid` in that when the value it
 provides is `concat`ed to any other value, it will return the other value. In
 the case of `All` the result of `empty` is `true`. `empty` is available on both
@@ -80,6 +90,11 @@ All(false).concat(All.empty())  //=> All false
 All ~> All -> All
 ```
 
+<details>
+  <summary>Breakdown</summary>
+  <code> All.concat </code> inputs type <code> All </code> and outputs type <code> All </code>
+</details>
+
 `concat` is used to combine (2) `Semigroup`s of the same type under an operation
 specified by the `Semigroup`. In the case of `All`, it will combine the (2)
 using logical AND (conjunction).
@@ -98,6 +113,11 @@ All(false).concat(All(false)) //=> All false
 ```haskell
 All ~> () -> Boolean
 ```
+
+<details>
+  <summary>Breakdown</summary>
+  <code> All.valueOf() </code> outputs type <code> Boolean </code>
+</details>
 
 `valueOf` is used on all `crocks` `Monoid`s as a means of extraction. While the
 extraction is available, types that implement `valueOf` are not necessarily a
